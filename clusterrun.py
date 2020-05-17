@@ -205,6 +205,7 @@ run('screen', '-dmS', opts.jobname)
 # Make the job directory (note that this will fail if it already exists).
 try:
     os.makedirs(job_dir)
+    print("Successful")
 except OSError as e:
     errno, message = e.args
     print('Error making "%s":' % job_dir, message,
@@ -213,6 +214,7 @@ except OSError as e:
 
 #start the master
 stuff_to_screen(opts.jobname, 0, master_command + '\n')
+print('Started the master successfully')
 
 # Wait for the master to start and get the port number.
 while True:
@@ -228,7 +230,7 @@ while True:
     except IOError:
         pass
     time.sleep(0.05)
-
+print('Started the master successfully')
 
 ##############################################################################
 # Start Slaves
